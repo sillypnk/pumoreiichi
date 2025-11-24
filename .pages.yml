@@ -10,7 +10,7 @@ content:
     path: content/microblog
     filename: '{year}-{month}-{day}-post.md'
     view:
-      fields: [date, content, tags]
+      fields: [date, tags]
     fields:
       - name: content
         label: Content
