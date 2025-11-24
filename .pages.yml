@@ -2,11 +2,13 @@ media:
   label: Media
   input: assets/media
   output: /assets/media__pages
+  
 content:
   - name: microblogs
     label: Microblogs
     type: collection
     path: content/microblog
+    filename: '{year}-{month}-{day}-post.md'
     view:
       fields: [date, content, tags]
     fields:
