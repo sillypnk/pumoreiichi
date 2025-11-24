@@ -12,10 +12,9 @@ content:
     view:
       fields: [date, tags]
     fields:
-      - name: content
-        label: Content
+      - name: body
+        label: Body
         type: rich-text
-        required: true
       - name: date
         label: Date
         type: string
