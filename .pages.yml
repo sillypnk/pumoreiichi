@@ -1,6 +1,6 @@
 media:
   label: Media
-  src: assets/media
+  input: assets/media
   output: /assets/media__pages
 content:
   - name: microblogs
