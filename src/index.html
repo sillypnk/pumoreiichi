@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- 🎨 Color Scheme -->
+	<script>
+		const colorScheme = localStorage.getItem("theme");
+		document.documentElement.setAttribute(
+			"data-theme",
+			colorScheme || "light",
+		);
+	</script>
+
+	<script src="./scripts/utils/custom-cursor.js" type="module"></script>
+	<script src="./scripts/components/menu.js" type="module"></script>
+	<script src="./scripts/components/statusbar.js" type="module"></script>
+	<script src="./scripts/muuri.js" type="module"></script>
+	<script src="./scripts/utils/height-adjuster.js" type="module"></script>
+	<script src="./scripts/misc/week.js" type="module"></script>
+
+	<script src="./scripts/mini-music.js" type="module"></script>
+	<link rel="stylesheet" type="text/css" href="./styles.css" />
+
+	<!-- [✨] SEO Stuff -->
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+	<!-- <link rel="shortcuticon" href="./favicon/favicon.ico"> -->
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="PumoReiichi!" />
+	<link rel="manifest" href="/favicon/site.webmanifest" />
+
+	<title>🧡 PumoReiichi!</title>
+	<meta name="description"
+		content="A personal portfolio which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="https://sillypnk.github.io" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="PumoReiichi!" />
+	<meta property="og:description"
+		content="A personal room which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!" />
+	<meta property="og:image"
+		content="https://opengraph.b-cdn.net/production/images/12044105-dd81-4b92-a2f2-010f9961830b.png?token=zw8LmFbfH3LIIH4ARZXzlSmxTqVKmRXePPUc1dDsUVQ&height=604&width=1200&expires=33296792141" />
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta property="twitter:domain" content="sillypnk.github.io" />
+	<meta property="twitter:url" content="https://sillypnk.github.io" />
+	<meta name="twitter:title" content="PumoReiichi!" />
+	<meta name="twitter:description"
+		content="A personal portfolio which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!" />
+	<meta name="twitter:image"
+		content="https://opengraph.b-cdn.net/production/images/12044105-dd81-4b92-a2f2-010f9961830b.png?token=zw8LmFbfH3LIIH4ARZXzlSmxTqVKmRXePPUc1dDsUVQ&height=604&width=1200&expires=33296792141" />
+
+	<style>
+		.desktop__cards .card {
+			display: block;
+			position: absolute;
+			z-index: 1;
+			margin: 0.8rem;
+			width: 100%;
+			height: 100%;
+
+			&.muuri-item-dragging {
+				z-index: 3;
+			}
+
+			&.muuri-item-releasing {
+				z-index: 2;
+			}
+
+			&.muuri-item-hidden {
+				z-index: 0;
+			}
+		}
+
+		.desktop__cards .card__content {
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+
+		.desktop__cards .card__titleBar {
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<noscript>Enabling JavaScript is recommended for the website to properly work.</noscript>
+
+	<!-- 
+	 [[ 🧡 PUMO COMPONENTS ]] 
+	-->
+	<pumo-statusbar></pumo-statusbar>
+	<pumo-menu></pumo-menu>
+	<!-- 
+	 [[-------------------------]]
+	-->
+
+	<img class="adachiRei" style="pointer-events: none; z-index: 1" src="/assets/media/adachi-victory.gif"
+		alt="An orange haired girl stuff toy doing her victory pose!" />
+
+	<main class="desktop" style="display: flex; flex-direction: row;">
+		<div class="desktop__apps">
+			<a href="/" class="desktop__icon">
+				<img src="/assets/icons/desktop/computer.png" alt="Computer Icon" />
+				<span>HOME</span>
+			</a>
+
+			<a href="/pages/about.html" class="desktop__icon">
+				<img src="/assets/icons/desktop/directory.png" alt="Directory Icon" />
+				<span>ABOUT</span>
+			</a>
+
+			<a href="/pages/gallery.html" class="desktop__icon">
+				<img src="assets/icons/desktop/file_blue_grad.png" alt="File Blue Gradient Icon" />
+				<span>GALLERY</span>
+			</a>
+
+			<a href="/pages/code.html" class="desktop__icon">
+				<img src="./assets/icons/desktop/windows-2.png" alt="File Blue Gradient Icon" />
+				<span>CODE</span>
+			</a>
+
+			<a href="/pages/projects.html" class="desktop__icon">
+				<img src="/assets/icons/desktop/program.png" alt="Notepad Icon" />
+				<span>PROJECTS</span>
+			</a>
+
+			<a href="/pages/links.html" class="desktop__icon">
+				<img src="/assets/icons/desktop/world.png" alt="Notepad Icon" />
+				<span>LINKS</span>
+			</a>
+
+			<a href="/pages/blog.html" class="desktop__icon">
+				<img src="/assets/icons/desktop/notepad-1.png" alt="Notepad Icon" />
+				<span>BLOGS</span>
+			</a>
+
+			<a href="/pages/microblog.html" class="desktop__icon">
+				<img src="/assets/icons/desktop/notepad.png" alt="Notepad Icon" />
+				<span>MICROBLOG</span>
+			</a>
+
+			<article class="card" style="
+						grid-column: 1 / -1;
+						width: 15rem;
+						margin: 0;
+						place-self: center;
+					">
+				<div class="card__content" style="padding: 0; display: flex; align-items: center">
+					<div class="is-animate-scroll__container" style="
+								text-align: left;
+								margin-left: 0.4rem;
+								height: 2.2rem;
+							">
+						<input id="search" type="text" style="
+									height: 100%;
+									font-family: Tickerbit;
+									background: none;
+									color: light-dark(
+										var(--clr-secondary),
+										var(--clr-base)
+									);
+									width: 100%;
+								" placeholder="Search..." />
+					</div>
+					<div class="music-btn" style="
+								border-right: none;
+								border-left: 2px solid var(--clr-base-content);
+								color: light-dark(
+									var(--clr-secondary),
+									var(--clr-base)
+								);
+							">
+						<svg style="width: 1.2em" fill="currentColor" viewBox="0 0 400 400" id="Search" version="1.1"
+							xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" stroke="currentColor">
+							<g stroke-width="0"></g>
+							<g stroke-linecap="round" stroke-linejoin="round"></g>
+							<g>
+								<g id="XMLID_14_">
+									<polygon id="XMLID_15_"
+										points="160,26.7 186.7,26.7 213.3,26.7 213.3,0 186.7,0 160,0 133.3,0 106.7,0 106.7,26.7 133.3,26.7 ">
+									</polygon>
+									<polygon id="XMLID_126_"
+										points="106.7,53.3 106.7,26.7 80,26.7 53.3,26.7 53.3,53.3 80,53.3 "></polygon>
+									<polygon id="XMLID_127_"
+										points="240,53.3 266.7,53.3 266.7,26.7 240,26.7 213.3,26.7 213.3,53.3 ">
+									</polygon>
+									<polygon id="XMLID_128_"
+										points="53.3,80 53.3,53.3 26.7,53.3 26.7,80 26.7,106.7 53.3,106.7 "></polygon>
+									<polygon id="XMLID_130_"
+										points="266.7,106.7 293.3,106.7 293.3,80 293.3,53.3 266.7,53.3 266.7,80 ">
+									</polygon>
+									<rect height="26.7" id="XMLID_131_" width="26.7" x="80" y="106.7"></rect>
+									<rect height="26.7" id="XMLID_132_" width="26.7" x="106.7" y="80"></rect>
+									<polygon id="XMLID_133_"
+										points="293.3,160 293.3,186.7 293.3,213.3 320,213.3 320,186.7 320,160 320,133.3 320,106.7 293.3,106.7 293.3,133.3 ">
+									</polygon>
+									<polygon id="XMLID_134_"
+										points="26.7,160 26.7,133.3 26.7,106.7 0,106.7 0,133.3 0,160 0,186.7 0,213.3 26.7,213.3 26.7,186.7 ">
+									</polygon>
+									<polygon id="XMLID_135_"
+										points="53.3,213.3 26.7,213.3 26.7,240 26.7,266.7 53.3,266.7 53.3,240 ">
+									</polygon>
+									<polygon id="XMLID_136_"
+										points="293.3,240 293.3,213.3 266.7,213.3 266.7,240 266.7,266.7 293.3,266.7 ">
+									</polygon>
+									<polygon id="XMLID_137_"
+										points="80,266.7 53.3,266.7 53.3,293.3 80,293.3 106.7,293.3 106.7,266.7 ">
+									</polygon>
+									<polygon id="XMLID_138_"
+										points="213.3,266.7 213.3,293.3 240,293.3 266.7,293.3 266.7,266.7 240,266.7 ">
+									</polygon>
+									<polygon id="XMLID_139_"
+										points="160,293.3 133.3,293.3 106.7,293.3 106.7,320 133.3,320 160,320 186.7,320 213.3,320 213.3,293.3 186.7,293.3 ">
+									</polygon>
+									<rect height="26.7" id="XMLID_140_" width="26.7" x="293.3" y="293.3"></rect>
+									<rect height="26.7" id="XMLID_141_" width="26.7" x="320" y="320"></rect>
+									<rect height="26.7" id="XMLID_142_" width="26.7" x="346.7" y="346.7"></rect>
+									<rect height="26.7" id="XMLID_143_" width="26.7" x="373.3" y="373.3"></rect>
+								</g>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</article>
+		</div>
+
+		<div class="desktop__cards" style="height: 500%;">
+			<article class="card card--draggable" style="width: 18rem; height: 30rem;">
+				<div class="card__titleBar">
+					<img src="/assets/icons/minimize.svg" alt="Minimize Icon" width="16" />
+					<img src="/assets/icons/restore_down.svg" alt="Restore Down Icon" width="12" />
+					<img src="/assets/icons/close.svg" alt="Close Icon" width="16" />
+				</div>
+
+				<div class="card__content">
+					<h2>#UPDATES</h2>
+					<div
+						style="padding-inline: 2rem; padding-block: 0.8rem; border: 2px solid var(--clr-base-content); height: 80%; overflow: auto;">
+						<ul>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[🧡]</span>
+								<b>03-11-26</b>: Minor update on website! Includes:
+								<ul style="margin-left: 2rem;">
+									<li>Fixed modal issue </li>
+									<li>Changed from statusbar to task bar</li>
+									<li>Change of animations and transitions</li>
+								</ul>
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b> 10-28-25 </b>: Gallery page is finally
+								done and I added pictures :)
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b> 10-26-25 </b>: Added sound effects on
+								modal
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>10-17-25</b>: Changed desktop icons
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>10-4-25</b>: Implemented light & dark
+								theme out of boredom
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>10-3-25</b>: Added updates card
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[🔧]</span>
+								<b>10-1-25</b>: Changed the looks of the
+								cards in the main page
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>9-20-25</b>: Microblogs were finally
+								added
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>8-17-25</b>: Added few songs for the mini
+								music player
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>9-15-25</b>: Start Menu implementation
+							</li>
+							<li>
+								<span style="
+											color: light-dark(
+												var(--clr-secondary),
+												var(--clr-base)
+											);
+											margin-right: 5px;
+										">[✨]</span>
+								<b>8-15-25</b>: Added a background pattern
+								with animation
+							</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+
+			<article class="card card--draggable" style="inline-size: 30rem; block-size: 20rem;">
+				<div class="card__titleBar">
+					<img src="/assets/icons/minimize.svg" alt="Minimize Icon" width="16" />
+					<img src="/assets/icons/restore_down.svg" alt="Restore Down Icon" width="12" />
+					<img src="/assets/icons/close.svg" alt="Close Icon" width="16" />
+				</div>
+
+				<div class="card__content">
+					<h2>#WELCOME!</h2>
+					<div>
+						<aside>
+							<img style="
+										width: 35%;
+										margin: 1px;
+										float: right;
+									" src="/assets/media/adachi_rei/adachi.png"
+								alt="An illustration of a orange haired girl staring at the viewer" />
+						</aside>
+						<p>
+							<span style="font-size: var(--size-md); font-weight: bold;">Hello, and welcome to my
+								personal room!</span>
+							This is a place where I can comfortably place things
+							that I don't have the ability to do in real life—
+							A place where I will mostly share fun stuff!
+							<br />
+							Some of the stuff here are still in progress so... expect some bugs :3
+						</p>
+					</div>
+				</div>
+			</article>
+
+
+			<article class="card card--draggable" style="width: 17rem; height: 30rem">
+				<div class="card__titleBar">
+					<img src="/assets/icons/minimize.svg" alt="Minimize Icon" width="16" />
+					<img src="/assets/icons/restore_down.svg" alt="Restore Down Icon" width="12" />
+
+					<img src="/assets/icons/close.svg" alt="Close Icon" width="16" />
+				</div>
+
+				<div class="card__content">
+					<h2>#MUSIC</h2>
+					<div class="music-player" style="
+								height: 3rem;
+								position: relative;
+								left: 0;
+								bottom: 0;
+							">
+						<button id="music-play" style="
+									border: none;
+									cursor: pointer;
+									background: none;
+								">
+							<img src="/assets/icons/play.svg" alt="Play/Pause Icon" width="12" />
+						</button>
+						<input id="seekbar" type="range" min="0" max="216" value="0" />
+						<span aria-label="Music Duration" style="font-size: 0.7em"><span id="duration-now"></span>/
+							<span id="duration-time"></span></span>
+					</div>
+
+					<div class="card card--noshadow" style="
+								width: 100%;
+								margin-top: 1rem;
+								margin-inline: 0;
+								position: relative;
+								height: 19rem;
+							">
+						<div class="card__content" style="
+									padding-inline: 1rem;
+									margin: 0;
+									overflow-y: auto;
+								">
+							<div>
+								<img src="/assets/icons/music_note.svg" alt="Music Note Icon" width="15" />
+								<span style="text-decoration: underline">PLAYLIST</span>
+							</div>
+							<div class="music-player__playlist">
+								<ul class="list" id="mini-playlist" style="
+											--list-style: url(&quot;/assets/icons/star-01.svg&quot;);
+										"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+
+			<article class="card card--draggable" style="width: 17rem; height: max-content;">
+				<div class="card__titleBar">
+					<img src="/assets/icons/minimize.svg" alt="Minimize Icon" width="16" />
+					<img src="/assets/icons/restore_down.svg" alt="Restore Down Icon" width="12" />
+					<img src="/assets/icons/close.svg" alt="Close Icon" width="16" />
+				</div>
+
+				<div class="card__content" style="overflow: hidden; text-align: center;">
+					<div id="adachiRei-day"></div>
+					<div id="adachiRei-container" style="
+									place-items: center;
+									margin-top: 10px;
+									display: flex;
+									flex-direction: column;
+									gap: 0.8rem;
+								">
+						<div style="
+										display: inline-flex;
+										place-items: center;
+										gap: 0.7rem;
+									">
+							<!-- Calendar Icon -->
+							<svg style="width: 1rem" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+								xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 64 64"
+								enable-background="new 0 0 64 64" xml:space="preserve" fill="currentColor">
+								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+								<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+								<g id="SVGRepo_iconCarrier">
+									<g>
+										<path fill="currentColor"
+											d="M60,4h-7V3c0-1.657-1.343-3-3-3s-3,1.343-3,3v1H17V3c0-1.657-1.343-3-3-3s-3,1.343-3,3v1H4 C1.789,4,0,5.789,0,8v52c0,2.211,1.789,4,4,4h56c2.211,0,4-1.789,4-4V8C64,5.789,62.211,4,60,4z M18,53c0,0.553-0.447,1-1,1h-6 c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V53z M18,42c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5 c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V42z M18,31c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6 c0.553,0,1,0.447,1,1V31z M30,53c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V53z M30,42c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V42z M30,31 c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V31z M42,53c0,0.553-0.447,1-1,1h-6 c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V53z M42,42c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5 c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V42z M42,31c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6 c0.553,0,1,0.447,1,1V31z M54,42c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V42z M54,31c0,0.553-0.447,1-1,1h-6c-0.553,0-1-0.447-1-1v-5c0-0.553,0.447-1,1-1h6c0.553,0,1,0.447,1,1V31z M62,15H2V8 c0-1.104,0.896-2,2-2h7v4c0,1.657,1.343,3,3,3s3-1.343,3-3V6h30v4c0,1.657,1.343,3,3,3s3-1.343,3-3V6h7c1.104,0,2,0.896,2,2V15z">
+										</path>
+									</g>
+								</g>
+							</svg>
+							<p>
+								It is now:
+								<span id="adachiRei-date">Sep 27, 2025</span>
+							</p>
+						</div>
+
+						<!-- Clock Icon -->
+						<div style="
+										display: inline-flex;
+										place-items: center;
+										gap: 0.4rem;
+									">
+							<svg style="width: 1.5rem" viewBox="0 0 24 24" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+								<g id="SVGRepo_tracurrentColorerCarrier" stroke-linecurrentcap="round"
+									stroke-linejoin="round"></g>
+								<g id="SVGRepo_icurrentColoronCarrier">
+									<path
+										d="M12 7V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+										stroke="currentColor" stroke-width="2" stroke-linecurrentcap="round"
+										stroke-linejoin="round"></path>
+								</g>
+							</svg>
+							<p>
+								Current time:
+								<span id="adachiRei-time">7:17:10 PM</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</article>
+
+
+			<article class="card card--draggable" style="width: 17rem; height: max-content; overflow: hidden">
+				<div class="card__titleBar">
+					<img src="/assets/icons/minimize.svg" alt="Minimize Icon" width="16" />
+					<img src="/assets/icons/restore_down.svg" alt="Restore Down Icon" width="12" />
+					<img src="/assets/icons/close.svg" alt="Close Icon" width="16" />
+				</div>
+
+				<div class="card__content">
+					<h2>#TODO</h2>
+					<div class="card card--noshadow card--noborder" style="
+								width: 100%;
+								margin: 0;
+								margin-left: 1rem;
+								overflow: visible;
+								height: 100%;
+								position: relative;
+								left: 0;
+								bottom: 0;
+							">
+						<ul class="card__content">
+							<li>
+								<s>Fix sticky taskbar</s>
+							</li>
+							<li>
+								<s>Microblog</s>
+							</li>
+							<li>
+								<s>Music player implementation</s>
+							</li>
+							<li>
+								<s>Carousel for Images</s>
+							</li>
+							<li>Responsive layout(?)</li>
+							<li>
+								Web Pages:
+								<ul style="margin-left: 1.5rem">
+									<li>
+										<s>Projects</s>
+									</li>
+									<li>
+										<s>Microblog</s>
+									</li>
+									<li>
+										<s>Gallery</s>
+									</li>
+									<li>Code</li>
+									<li>Links</li>
+									<li>Blogs</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</article>
+		</div>
+	</main>
+</body>
+
+</html>

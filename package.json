@@ -1,0 +1,27 @@
+{
+  "name": "PumoReiichi",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.4",
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "browserslist": "^4.28.1",
+    "html-minifier-terser": "^7.2.0",
+    "lightningcss": "^1.31.1",
+    "stylelint": "^16.26.1",
+    "stylelint-config-standard": "^39.0.1",
+    "terser": "^5.46.0",
+    "vite": "^7.3.1",
+    "vite-plugin-checker": "^0.12.0",
+    "vite-plugin-html-minifier": "^1.0.5",
+    "vite-plugin-vanilla": "^2.1.1"
+  },
+  "dependencies": {
+    "howler": "^2.2.4",
+    "muuri": "^0.9.5"
+  }
+}

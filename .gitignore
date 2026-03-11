@@ -1,0 +1,4 @@
+bun.lock
+.git/
+node_modules/
+dist/

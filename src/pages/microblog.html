@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<script>
+		const colorScheme = localStorage.getItem('theme')
+		document.documentElement.setAttribute(
+			'data-theme',
+			colorScheme || 'light',
+		)
+	</script>
+
+	<link rel="stylesheet" type="text/css" href="../styles.css">
+	<script src="../scripts/utils/custom-cursor.js" type="module"></script>
+	<script src="../scripts/components/menu.js" type="module"></script>
+	<script src="../scripts/components/statusbar.js" type="module"></script>
+	<script src="../scripts/microblogs.js" type="module"></script>
+
+	<!-- [✨] SEO Stuff -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="../assets/favicon/favicon.svg">
+	<!-- <link rel="shortcut icon" href="../assets/favicon/favicon.ico"> -->
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-touch-icon.png">
+	<meta name="apple-mobile-web-app-title" content="PumoReiichi! - 📰 Microblog">
+	<link rel="manifest" href="../assets/favicon/site.webmanifest">
+
+	<title>PumoReiichi! - 📰 Microblog</title>
+	<meta name="description"
+		content="A personal portfolio which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!">
+
+	<!-- Facebook Meta Tags -->
+	<meta property="og:url" content="https://sillypnk.github.io">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="PumoReiichi! - 📰 Microblog">
+	<meta property="og:description"
+		content="A personal room which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!">
+	<meta property="og:image"
+		content="https://opengraph.b-cdn.net/production/images/12044105-dd81-4b92-a2f2-010f9961830b.png?token=zw8LmFbfH3LIIH4ARZXzlSmxTqVKmRXePPUc1dDsUVQ&height=604&width=1200&expires=33296792141">
+
+	<!-- Twitter Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta property="twitter:domain" content="sillypnk.github.io">
+	<meta property="twitter:url" content="https://sillypnk.github.io">
+	<meta name="twitter:title" content="PumoReiichi!">
+	<meta name="twitter:description"
+		content="A personal portfolio which heavily inspired by a neocities developer @nenrikido. Don't forget to check them out!">
+	<meta name="twitter:image"
+		content="https://opengraph.b-cdn.net/production/images/12044105-dd81-4b92-a2f2-010f9961830b.png?token=zw8LmFbfH3LIIH4ARZXzlSmxTqVKmRXePPUc1dDsUVQ&height=604&width=1200&expires=33296792141">
+</head>
+
+<body>
+	<!-- TODO: This one -->
+	<!-- <div class="animate--scroll-bottom"> -->
+	<!-- 	<span style="color: light-dark(var(--clr-secondary), var(--clr-base))"> -->
+	<!-- 		プモレ -->
+	<!-- 	</span> -->
+	<!-- 	イチ -->
+	<!-- </div> -->
+	<!-- <div class="animate--scroll-top"> -->
+	<!-- 	プモレ -->
+	<!-- 	<span style="color: light-dark(var(--clr-secondary), var(--clr-base))"> -->
+	<!-- 		イチ -->
+	<!-- 	</span> -->
+	<!-- </div> -->
+
+	<noscript>Enabling JavaScript is recommended for the website to properly
+		work.</noscript>
+
+	<pumo-statusbar></pumo-statusbar>
+	<pumo-menu></pumo-menu>
+
+	<audio src="../assets/media/audio/[Toby Fox] You Can Always Come Home.mp3" id="music-player"></audio>
+
+	<img class="adachiRei" src="../assets/media/adachi-victory.gif" alt="Adachi Rei Plushie Dancing">
+
+	<div class="desktop">
+		<nav class="desktop__nav">
+			<div class="card" style="
+            padding: 1em 0.2em;
+            height: 100%;
+            width: 100%;
+          ">
+				<div class="card__content">
+					<!-- Nav Icon -->
+					<img style="pointer-events: none" src="../assets/icons/desktop/notepad.png" alt="Directory Icon">
+
+					<a href="/pages/microblog.html" class="link">
+						microblog
+					</a>
+				</div>
+			</div>
+
+			<article class="card" style="width: 15rem;">
+				<div class="card__content" style="padding: 0; display: flex; align-items: center">
+					<div id="music" class="music-btn">
+						<img id="is-playing-img" src="../assets/media/musical-notes.gif" alt="Musical Note"
+							style="max-width: 100%; mix-blend-mode: darken">
+					</div>
+					<div class="is-animate-scroll__container">
+						<span class="is-animate-scroll">
+							You Can Always Come Home - Toby Fox
+							<span id="is-playing"></span>
+						</span>
+					</div>
+				</div>
+			</article>
+
+			<article class="card" style="width: 15rem; margin-top: 0">
+				<div class="card__content" style="padding: 0; display: flex; align-items: center">
+					<div class="is-animate-scroll__container"
+						style="text-align: left; margin-left: 0.4rem; height: 2.2rem">
+						<input id="search" type="text" style="
+                  height: 100%;
+                  font-family: Tickerbit;
+                  background: none;
+                  color: light-dark(var(--clr-secondary), var(--clr-base));
+                  width: 100%;
+                " placeholder="Search...">
+					</div>
+					<div class="music-btn" style="
+                border-right: none;
+                border-left: 2px solid var(--clr-base-content);
+                color: light-dark(var(--clr-secondary), var(--clr-base));
+              ">
+						<svg style="width: 1.2em" fill="currentColor" viewBox="0 0 400 400" id="Search" version="1.1"
+							xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink" stroke="currentColor">
+							<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+							<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+							<g id="SVGRepo_iconCarrier">
+								<g id="XMLID_14_">
+									<polygon id="XMLID_15_"
+										points="160,26.7 186.7,26.7 213.3,26.7 213.3,0 186.7,0 160,0 133.3,0 106.7,0 106.7,26.7 133.3,26.7 ">
+									</polygon>
+									<polygon id="XMLID_126_"
+										points="106.7,53.3 106.7,26.7 80,26.7 53.3,26.7 53.3,53.3 80,53.3 "></polygon>
+									<polygon id="XMLID_127_"
+										points="240,53.3 266.7,53.3 266.7,26.7 240,26.7 213.3,26.7 213.3,53.3 ">
+									</polygon>
+									<polygon id="XMLID_128_"
+										points="53.3,80 53.3,53.3 26.7,53.3 26.7,80 26.7,106.7 53.3,106.7 "></polygon>
+									<polygon id="XMLID_130_"
+										points="266.7,106.7 293.3,106.7 293.3,80 293.3,53.3 266.7,53.3 266.7,80 ">
+									</polygon>
+									<rect height="26.7" id="XMLID_131_" width="26.7" x="80" y="106.7"></rect>
+									<rect height="26.7" id="XMLID_132_" width="26.7" x="106.7" y="80"></rect>
+									<polygon id="XMLID_133_"
+										points="293.3,160 293.3,186.7 293.3,213.3 320,213.3 320,186.7 320,160 320,133.3 320,106.7 293.3,106.7 293.3,133.3 ">
+									</polygon>
+									<polygon id="XMLID_134_"
+										points="26.7,160 26.7,133.3 26.7,106.7 0,106.7 0,133.3 0,160 0,186.7 0,213.3 26.7,213.3 26.7,186.7 ">
+									</polygon>
+									<polygon id="XMLID_135_"
+										points="53.3,213.3 26.7,213.3 26.7,240 26.7,266.7 53.3,266.7 53.3,240 ">
+									</polygon>
+									<polygon id="XMLID_136_"
+										points="293.3,240 293.3,213.3 266.7,213.3 266.7,240 266.7,266.7 293.3,266.7 ">
+									</polygon>
+									<polygon id="XMLID_137_"
+										points="80,266.7 53.3,266.7 53.3,293.3 80,293.3 106.7,293.3 106.7,266.7 ">
+									</polygon>
+									<polygon id="XMLID_138_"
+										points="213.3,266.7 213.3,293.3 240,293.3 266.7,293.3 266.7,266.7 240,266.7 ">
+									</polygon>
+									<polygon id="XMLID_139_"
+										points="160,293.3 133.3,293.3 106.7,293.3 106.7,320 133.3,320 160,320 186.7,320 213.3,320 213.3,293.3 186.7,293.3 ">
+									</polygon>
+									<rect height="26.7" id="XMLID_140_" width="26.7" x="293.3" y="293.3"></rect>
+									<rect height="26.7" id="XMLID_141_" width="26.7" x="320" y="320"></rect>
+									<rect height="26.7" id="XMLID_142_" width="26.7" x="346.7" y="346.7"></rect>
+									<rect height="26.7" id="XMLID_143_" width="26.7" x="373.3" y="373.3"></rect>
+								</g>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</article>
+		</nav>
+
+		<main class="desktop__cards" style="
+          display: flex;
+          flex-direction: column;
+          /* height: 120%; */
+          width: 100%;
+        ">
+			<!-- Portfolio -->
+			<article class="card" style="width: 33rem; height: 17rem; box-shadow: none;">
+				<div class="card__content" style="
+              		padding: 0;
+              		margin: 0;
+              		overflow: hidden;
+              		display: grid;
+              		grid-template-rows: 100%;
+              		grid-template-areas: 'stack';
+                	background-image: linear-gradient(
+                  	to bottom,
+                  	var(--clr-secondary) 50%,
+                  	oklch(from var(--clr-secondary) calc(l - 0.17) c h)
+                	);
+            	">
+					<div style="
+                		grid-area: stack;
+                		height: 100%;
+                		width: 100%;
+              		">
+						<img style="object-fit: cover; opacity: 20%; block-size: 100%; inline-size: 100%;"
+							src="https://c.tenor.com/WIVSqDS1iW4AAAAC/tenor.gif"
+							alt="Two anime horse girls dancing happily and cutely" />
+					</div>
+					<div style="
+                		padding-inline: 30px;
+                		padding-block: 20px;
+                		grid-area: stack;
+                		z-index: 1;
+                		place-items: start;
+              		">
+						<div class="avatar" style="margin-bottom: 1.2rem">
+							<div style="width: 7rem; border-radius: 50em; outline: 1px solid var(--clr-base-content);">
+								<picture>
+									<source sizes="100%" srcset="../assets/media/avatar.webp 100w" type="image/webp">
+									<source sizes="100%" srcset="../assets/media/avatar.jpg 100w" type="image/jpeg">
+									<img src="../assets/media/avatar.jpg"
+										style=" width: 110%; height: 110%; object-position: -10px -15px;"
+										alt="An avatar for the dialog" />
+								</picture>
+							</div>
+						</div>
+						<h2
+							style="line-height: 0.3px; color: transparent; background: linear-gradient(180deg, var(--clr-base-content) 50%, var(--clr-base) 50%); background-clip: text; margin-bottom: 5px">
+							James Pendon
+							<img src="../assets/media/star.gif"
+								style="display: inline; vertical-align: middle; width: 2rem" alt>
+						</h2>
+						<a class="link" target="_blank" style="text-decoration: none; font-size: 1.5rem"
+							title="Facebook Account" href="https://www.facebook.com/james.alvin.pendon.2025/">
+							@pumoreiichi
+						</a>
+						<p>
+							<q style="font-style: italic; color: oklch(from var(--clr-base) calc(l - 0.3) c h);">
+								Dreams are reality, Hope is despair
+							</q>
+							<cite>- COI, Volume 6</cite>
+						</p>
+					</div>
+				</div>
+			</article>
+
+			<div id="microblogs"></div>
+		</main>
+	</div>
+</body>
+
+</html>

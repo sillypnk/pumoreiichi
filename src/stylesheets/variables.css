@@ -1,0 +1,72 @@
+:root {
+	/* 🎨 Colors */
+	--clr-secondary: oklch(23.929% 0 271.152deg);
+	--clr-base: oklch(97.586% 0.0112 71.721deg);
+	--clr-primary: oklch(94.73% 0.0505 81.644deg);
+	--clr-base-content: oklch(74.664% 0.1763 58.951deg);
+
+	/* 👀 Font */
+	--font-pixelmplus: "PixelMplus", "Tickerbit", monospace, sans-serif;
+	--font-zpix: "Zpix", "Tickerbit", monospace, sans-serif;
+	--font-tickerbit: Tickerbit, "Yuruka STD", sans-serif;
+	--font-yuruka: "Yuruka STD", "LINE Seed JP", Arial, sans-serif;
+	--font-raster-forge:
+		"Raster Forge", Tickerbit, "LINE Seed JP", Arial, sans-serif;
+
+	/* 🎯 Sizes */
+	--base-unit: 1rem;
+	--size-3xs: calc(var(--base-unit) * 0.25);
+	/* 4px if base is 16px */
+	--size-2xs: calc(var(--base-unit) * 0.5);
+	/* 8px */
+	--size-xs: calc(var(--base-unit) * 0.75);
+	/* 12px */
+	--size-sm: calc(var(--base-unit) * 0.875);
+	/* 14px */
+	--size-md: calc(var(--base-unit) * 1);
+	/* 16px */
+	--size-lg: calc(var(--base-unit) * 1.25);
+	/* 20px */
+	--size-xl: calc(var(--base-unit) * 1.5);
+	/* 24px */
+	--size-2xl: calc(var(--base-unit) * 2);
+	/* 32px */
+	--size-3xl: calc(var(--base-unit) * 2.5);
+	/* 40px */
+	--size-4xl: calc(var(--base-unit) * 3);
+	/* 48px */
+	--size-5xl: calc(var(--base-unit) * 4);
+	/* 64px */
+	--size-6xl: calc(var(--base-unit) * 5);
+	/* 80px */
+
+	/* 🧩 Components */
+	--btn-height: 0.7rem;
+	--btn-width: 0.9rem;
+	--btn-clr: light-dark(var(--clr-secondary), var(--clr-base));
+	--btn-clr-bg: light-dark(var(--clr-secondary), var(--clr-base));
+	--btn-radius: 0.5rem;
+
+	/* 🔊 Transitions */
+	--transition-duration: 130ms;
+	--transition-ease: ease-in-out;
+
+	/* 🤔 Misc */
+
+	/* animations */
+	--char-speed: 0.06s;
+
+	/* speed per character */
+	--cursor-blink: 1s;
+
+	--bg-overlay-grad:
+		url("/assets/icons/microphone-with-tail.svg") 0 0 / 50px 50px,
+		linear-gradient(90deg,
+			oklch(74.84% 0.1874 347.55deg / 10%) 0%,
+			oklch(71.9% 0.1751 22.5deg / 10%) 20%,
+			oklch(80.46% 0.1493 66.51deg / 10%) 40%,
+			oklch(90.16% 0.1863 97.91deg / 10%) 60%,
+			oklch(8.76% 0.2653 137.16deg / 10%) 80%,
+			oklch(5.72% 0.1113 217.44deg / 10%) 500%),
+		oklch(1 0 0 / 100%);
+}
