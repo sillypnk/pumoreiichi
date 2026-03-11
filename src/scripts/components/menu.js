@@ -313,12 +313,14 @@ class PumoMenu extends HTMLElement {
 
 		window.onload = () => {
 			const proTips = [
-				'Try pressing space on a page with a mini music',
 				"Do alt + n if you're on desktop",
 				'ESC to escape this menu',
-				'I uh... forgot, what was it again?',
-				'Dark theme is the coolest!',
+				'I recommend listening to heat abnormal',
+				'I forgot what I was gonna say..',
+				'Dark theme is the coolest trust',
+				'Broken website + no responsive',
 				'Hachimi hachimi',
+				'Mambo Mambo! Omatsuri Mambo!',
 			]
 			const randNum = Math.floor(Math.random() * proTips.length)
 			const proTipSpan = this.shadowRoot.querySelector('#pro-tip')

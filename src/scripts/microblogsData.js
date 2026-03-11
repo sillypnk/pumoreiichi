@@ -10,6 +10,14 @@
  */
 export const MICROBLOGS = [
   {
+    	date: "03/11/2026 9:31 PM",
+    content: `
+		I genuinely think that I will always fail at class.
+		Perhaps I am fated to fail?
+    `,
+    tags: ["lifehatesme"],
+  },
+  {
     date: "11/24/2025 6:31 PM",
     content: `
         I wish I could've gone to 

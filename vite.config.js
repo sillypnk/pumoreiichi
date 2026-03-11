@@ -1,7 +1,7 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
+import { browserslistToTargets, Features } from 'lightningcss'
 import { defineConfig } from 'vite'
 // import checker from 'vite-plugin-checker'
 import htmlMinifier from 'vite-plugin-html-minifier'
@@ -33,6 +33,8 @@ export default defineConfig({
 		transformer: 'lightningcss',
 		lightningcss: {
 			targets: browserslistToTargets(browserslist('>= 0.25%')),
+			errorRecovery: true,
+			exclude: Features.LabColors | Features.OklabColors,
 		},
 	},
 	// optimizeDeps: {

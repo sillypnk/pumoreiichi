@@ -1,3 +1,6 @@
+import Avatar from "../assets/media/avatar.png"
+import AvatarWEBP from "../assets/media/avatar.png"
+
 import { randomInt } from "./utils/rand.js";
 import { getRelativeTimeString } from "./getRelativeTimeString.js";
 
@@ -31,9 +34,9 @@ microblogsData.forEach((microblog) => {
                   >
                   <picture>
                       <!-- Fallbacks -->
-                      <source srcset="../assets/media/avatar.webp" type="image/webp" />
-                      <source srcset="../assets/media/avatar.jpg" type="image/jpeg" />
-                      <img src="../assets/media/avatar.jpg" style="
+                      <source srcset="${AvatarWEBP}" type="image/webp" />
+                      <source srcset="${Avatar}" type="image/png" />
+                      <img src="${Avatar}" style="
                           width: 110%;
                           height: 110%;
                           object-position: -3px -7px;
