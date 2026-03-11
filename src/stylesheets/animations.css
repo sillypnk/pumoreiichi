@@ -1,0 +1,99 @@
+@keyframes transform-top {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0%);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes bg-scroll {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -100% 100%;
+  }
+}
+
+@keyframes bg-scroll-alt {
+  from {
+    background-position: 0 0, 0 0;
+  }
+
+  to {
+    background-position: -100% -100%, 0 0;
+  }
+}
+
+@keyframes scroll-bottom {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate--typewriter {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid transparent;
+  	
+  width: 0;
+  margin-bottom: 0.4rem;
+  animation: typing calc(var(--chars) * var(--char-speed)) steps(var(--chars))
+      forwards,
+    blink var(--cursor-blink) steps(1) infinite,
+    hide-cursor calc(var(--chars) * var(--char-speed) + 0.2s) linear forwards;
+  animation-delay: var(--delay, 0s), var(--delay, 0s), var(--delay, 0s);
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+    border-right-color: var(--clr-base-content);
+  }
+
+  to {
+    width: calc(var(--chars) * 1ch);
+    border-right-color: var(--clr-base-content);
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes hide-cursor {
+  0%,
+  95% {
+    border-right-color: var(--clr-base-content);
+  }
+
+  100% {
+    border-right-color: transparent;
+  }
+}
