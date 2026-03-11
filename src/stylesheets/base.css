@@ -26,8 +26,7 @@
 		position: relative;
 		color: oklch(from var(--clr-base-content) calc(l + 0.07) c h);
 		background-color: light-dark(var(--clr-base), var(--clr-secondary));
-		background: light-dark(
-			radial-gradient(circle at 1px 1px,
+		background: light-dark(radial-gradient(circle at 1px 1px,
 					oklch(7.72% 0 299deg / 25%) 1px,
 					transparent 0),
 				radial-gradient(circle at 1px 1px,
@@ -78,7 +77,6 @@
 		/* --clr-base-content: oklch(78.211% 0.16941 69.512); */
 		/* text-shadow: 0 0 2.5px currentColor; */
 		color-scheme: dark;
-
 	}
 
 	[data-theme="light"] {

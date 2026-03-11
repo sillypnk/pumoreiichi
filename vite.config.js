@@ -10,7 +10,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
 	root: './src',
-	base: '',
+	base: 'https://pumoreiichi.pages.dev',
 	publicDir: '../public',
 	plugins: [
 		// checker({
